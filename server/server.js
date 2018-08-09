@@ -21,13 +21,17 @@ var io = socketIO(server);
 
 
 io.on("connection", function (socket) {
-socket.emit("newMessage" , {
-    text : "Hey !",
-    from : "Omar Ali",
-    createdAt : new Date().getHours()
-})
+//socket.emit("newMessage" , {
+//    text : "Hey !",
+//    from : "Omar Ali",
+//    createdAt : new Date().getHours()
+//})
 socket.on("createMessage", function(email) {
-    console.log(email)
+    io.emit("newMessage" , {
+        text : email.text,
+        from : email.from,
+        createdAt : new Date().getHours()
+    })
 } )
 });
 
