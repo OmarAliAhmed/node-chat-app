@@ -32,6 +32,10 @@ io.on("connection", function (socket) {
     socket.on("newLocationMessage" , function(position) {
         io.emit("newLocationMessage" , generateLocationMessage(position.latitude, position.longitude, "admin"))
     })
+    socket.on("disconnect", function() {
+        socket.broadcast.emit("newMessage", generateMessage("A user has left !" , "user"))
+    })
+              
 });
 
 
