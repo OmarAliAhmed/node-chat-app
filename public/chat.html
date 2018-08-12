@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat || Chat Application</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="chat">
+
+    <div class="chat__sidebar">
+        <h3>People</h3>
+        <div id="users"></div>
+    </div>
+
+    <div class="chat__main">
+        <ol id="messages" class="chat__messages"></ol>
+        <div class="chat__footer">
+
+            <form id="message-form">
+
+                <input name="message" placeholder="Write a message ....." autofocus autocomplete="off" />
+
+
+                <button>send</button>
+
+            </form>
+            <button id="send-location">Send location</button>
+
+        </div>
+    </div>
+
+
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/libs/moment.js"></script>
+    <script src="js/libs/jquery-3.3.1.min.js"></script>
+    <script src="js/libs/mustache.js"></script>
+    <script src="js/chat.js"></script>
+    <script id="message-template" type="text/template">
+        <li class="message">
+            <div class="message__title">
+                <h4>{{from}}</h4>
+                <span>{{createdAt}}</span>
+            </div>
+            <div class="message__body">
+                <p>{{text}}</p>
+            </div>
+        </li>
+    </script>
+        <script id="message-location-template" type="text/template">
+        <li class="message">
+            <div class="message__title">
+                <h4>{{from}}</h4>
+                <span>{{createdAt}}</span>
+            </div>
+            <div class="message__body">
+                <a href={{url}}>My current location</a>
+            </div>
+        </li>
+    </script>
+</body>
+
+</html>

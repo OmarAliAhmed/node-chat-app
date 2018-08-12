@@ -25,8 +25,8 @@ io.on("connection", function (socket) {
     socket.emit("newMessage", generateMessage("Welcome to the chat app", "admin"))
     socket.broadcast.emit("newMessage", generateMessage("A user joined the room !", "admin"))
     socket.on("createMessage", function (email , callback) {
-        io.emit("newMessage", generateMessage(email.text, email.from))
-        callback();
+        io.emit("newMessage", generateMessage(email.text, email.from));
+        callback("something");
     })
     //Geolocation Setup 
     socket.on("newLocationMessage" , function(position) {
